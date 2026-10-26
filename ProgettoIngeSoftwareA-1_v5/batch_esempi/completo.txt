@@ -1,0 +1,94 @@
+# ==============================================================================
+# FILE BATCH COMPLETO DI ESEMPIO PER IL BACK-END (VERSIONE 5)
+# Questo file dimostra l'importazione contemporanea di:
+# 1. Campi Comuni
+# 2. Categorie con relativi Campi Specifici
+# 3. Nuove Proposte di Iniziativa (con o senza pubblicazione immediata in bacheca)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# SEZIONE 1: CAMPI COMUNI (condivisi da tutte le categorie)
+# ------------------------------------------------------------------------------
+[CAMPO_COMUNE]
+nome: Sponsor Tecnico
+descrizione: Eventuale sponsor o partner tecnico dell'evento
+obbligatorio: false
+tipo: STRINGA
+
+[CAMPO_COMUNE]
+nome: Età Minima Richiesta
+descrizione: Età minima consentita per i partecipanti
+obbligatorio: false
+tipo: INTERO
+
+# ------------------------------------------------------------------------------
+# SEZIONE 2: CATEGORIE E CAMPI SPECIFICI
+# ------------------------------------------------------------------------------
+[CATEGORIA]
+nome: Ciclismo
+descrizione: Escursioni, gite e gare ciclistiche amatoriali
+
+[CAMPO_SPECIFICO]
+nome: Casco Rigido Obbligatorio
+descrizione: Obbligo del casco protettivo omologato durante l'escursione
+obbligatorio: true
+tipo: BOOLEANO
+
+[CAMPO_SPECIFICO]
+nome: Tipologia Bicicletta
+descrizione: Tipo di bicicletta ammessa (Corsa, MTB, Gravel)
+obbligatorio: true
+tipo: STRINGA
+
+[CATEGORIA]
+nome: Cultura e Musei
+descrizione: Visite guidate a mostre, musei ed eventi culturali
+
+[CAMPO_SPECIFICO]
+nome: Guida Inclusa
+descrizione: Presenza di una guida turistica autorizzata
+obbligatorio: true
+tipo: BOOLEANO
+
+# ------------------------------------------------------------------------------
+# SEZIONE 3: NUOVE PROPOSTE DI INIZIATIVA
+# Devono rispettare tutti i vincoli:
+# - Termine ultimo iscrizione > data odierna (12/10/2026)
+# - Data >= Termine + 2 giorni
+# - Data conclusiva >= Data
+# - Quota individuale >= 0.0
+# - Numero partecipanti > 0
+# ------------------------------------------------------------------------------
+
+# Proposta 1: pubblicata subito in bacheca nello stato APERTA
+[PROPOSTA]
+categoria: Ciclismo
+pubblica_subito: true
+Titolo: Giro Ciclistico delle Colline
+Numero di partecipanti: 12
+Termine ultimo di iscrizione: 15/11/2026
+Luogo: Piazza Garibaldi, Brescia
+Data: 20/11/2026
+Ora: 08:30
+Quota individuale: 15.00
+Data conclusiva: 20/11/2026
+Casco Rigido Obbligatorio: true
+Tipologia Bicicletta: Mountain Bike
+Sponsor Tecnico: Cicli Sport BS
+Età Minima Richiesta: 16
+
+# Proposta 2: creata come proposta VALIDA nella sessione di lavoro del configuratore
+[PROPOSTA]
+categoria: Cultura e Musei
+pubblica_subito: false
+Titolo: Visita Guidata al Museo Santa Giulia
+Numero di partecipanti: 20
+Termine ultimo di iscrizione: 18/11/2026
+Luogo: Museo di Santa Giulia, Via Musei
+Data: 22/11/2026
+Ora: 15:00
+Quota individuale: 8.50
+Data conclusiva: 22/11/2026
+Guida Inclusa: true
+Sponsor Tecnico: Fondazione Musei
+Età Minima Richiesta: 10
